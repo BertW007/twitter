@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p><a href='/account/edit/{{ user.pk }}'>Edit profil</a></p>
+    <ul>
+        <li><a href="{% url 'tweet-create' %}">Dodaj tweeta!</a></li>
+        {% for object in object_list %}
+            <li><a href="{% url 'tweet-detail' object.pk %}">{{ object.content }}</a></li>
+        {% empty %}
+            <li>Empty tweet!</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

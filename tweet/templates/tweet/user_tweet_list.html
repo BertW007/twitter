@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+        {% for object in user_tweet %}
+            <li>{{ object.content }}</li>
+        {% empty %}
+            <li>Empty tweet!</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

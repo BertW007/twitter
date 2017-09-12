@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Detail tweet</h2>
+    <h3> {{ user.username }}</h3>
+    <ol>
+    {% for object in tweet  %}
+        <li>{{ object.creation_date }}</li>
+        <li>{{ object.user }} <a href="{% url 'message-create' object.user_id %}">Send Message</a></li>
+    {% endfor %}
+{% endblock %}
+</ol>

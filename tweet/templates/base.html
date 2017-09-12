@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div>
+    <a href="/">Twitter</a>
+    {% if user.is_authenticated %}
+        <a href='/account/edit/{{ user.pk }}'>Edit profil</a>
+        <a href='{% url 'user-tweet-list' user.username %}'>Look your tweet</a>
+    {% else %}
+        <a href="{% url 'user-create' %}">Sign Up!</a>
+    {% endif %}
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        {% if user.is_authenticated %}
+            {{user.username}} (<a href="{% url 'user-logout' %}">Logout</a>)
+        {% else %}
+            <a href="{% url 'user-login' %}">Login</a>
+        {% endif %}
+    </footer>
+</body>
+</html>
